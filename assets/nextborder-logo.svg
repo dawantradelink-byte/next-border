@@ -1,0 +1,10 @@
+<svg width="1200" height="740" viewBox="0 0 1200 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="740" rx="42" fill="#0C210C"/>
+  <path d="M100 92H147L238 184C267 213 292 248 309 282V92H360V372H313L224 282C194 252 168 219 147 182V372H100V92Z" fill="#D6F5D4"/>
+  <path d="M404 92H581C641 92 690 105 725 132C760 159 778 196 778 239C778 294 748 332 686 353C763 367 802 407 802 472V478H732C729 433 697 407 637 399H458V478H404V92ZM458 143V352H585C630 352 666 342 694 323C721 304 735 277 735 243C735 211 722 184 695 166C668 151 631 143 585 143H458Z" fill="#C9ECC7"/>
+  <circle cx="864" cy="138" r="30" fill="#EBCD43"/>
+  <path d="M80 478H872" stroke="#EBCD43" stroke-width="10"/>
+  <text x="80" y="455" fill="#E5FFE3" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700">Next</text>
+  <text x="220" y="455" fill="#67A16D" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="400">Border</text>
+  <text x="80" y="515" fill="#DBF1D8" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="500" letter-spacing="1.4">CROSSING BOUNDARIES - BUILDING FUTURES</text>
+</svg>
