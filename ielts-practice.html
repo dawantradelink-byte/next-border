@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Free IELTS Practice Test | NextBorder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #130a22;
+  --bg-card:   #1e1235;
+  --bg-inner:  #251843;
+  --lavender:  #d4c9f5;
+  --lavender2: #9b8ec4;
+  --amber:     #f0a030;
+  --amber2:    #c97d18;
+  --white:     #ffffff;
+  --muted:     #6b5f85;
+  --border:    rgba(212,201,245,0.12);
+  --border2:   rgba(212,201,245,0.22);
+  --glow:      rgba(212,201,245,0.06);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--lavender);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(155,142,196,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(240,160,48,0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 28px 32px 22px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(19,10,34,0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 16px; }
+.nb-mark { width: 52px; height: 52px; flex-shrink: 0; }
+.brand-text { line-height: 1; }
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.brand-name span:first-child { color: var(--white); }
+.brand-name span:last-child  { color: var(--lavender); }
+.brand-divider {
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--amber2), transparent);
+  margin: 4px 0;
+  border-radius: 1px;
+}
+.brand-tagline {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+.header-badge {
+  background: rgba(240,160,48,0.12);
+  border: 1px solid rgba(240,160,48,0.3);
+  color: var(--amber);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+}
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 700px;
+  margin: 40px auto 80px;
+  padding: 0 18px;
+}
+.page-title { text-align: center; margin-bottom: 32px; animation: fadeUp 0.6s ease both; }
+.page-title h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.page-title p { font-size: 13px; color: var(--muted); letter-spacing: 1px; }
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 18px;
+  animation: fadeUp 0.6s ease both;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lavender2), transparent);
+  opacity: 0.4;
+}
+.timer-wrap { text-align: center; margin-bottom: 24px; }
+.timer {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--lavender);
+  letter-spacing: 4px;
+  line-height: 1;
+  transition: color 0.4s;
+}
+.timer.warning { color: #e85d3a; }
+.timer-label { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: var(--muted); margin-top: 6px; }
+.progress-bar { height: 3px; background: var(--border); border-radius: 2px; margin-bottom: 28px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--lavender2), var(--amber));
+  border-radius: 2px;
+  transition: width 1s linear;
+  width: 100%;
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border2), transparent);
+}
+.passage {
+  background: var(--bg-inner);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--lavender);
+  margin-bottom: 26px;
+  font-weight: 300;
+}
+.question-text { font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 18px; line-height: 1.5; }
+.options { display: flex; flex-direction: column; gap: 10px; }
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 20px;
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 15px;
+  color: var(--lavender);
+  background: transparent;
+  font-weight: 400;
+}
+.option:hover { border-color: var(--lavender2); background: var(--glow); color: var(--white); }
+.option.selected { border-color: var(--amber); background: rgba(240,160,48,0.08); color: var(--white); }
+.option input[type="radio"] {
+  appearance: none;
+  width: 18px; height: 18px;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.option input[type="radio"]:checked {
+  border-color: var(--amber);
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(240,160,48,0.2);
+}
+.form-grid { display: flex; flex-direction: column; gap: 16px; }
+.input-wrap label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 7px;
+}
+.input-wrap input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  color: var(--white);
+  background: var(--bg-inner);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.input-wrap input::placeholder { color: var(--muted); }
+.input-wrap input:focus { border-color: var(--lavender2); box-shadow: 0 0 0 3px rgba(155,142,196,0.1); }
+.btn-submit {
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(135deg, #2e1a5e, #4a2d8a);
+  color: var(--lavender);
+  border: 1px solid var(--lavender2);
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(240,160,48,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.btn-submit:hover { color: var(--white); border-color: var(--amber); }
+.btn-submit:hover::before { opacity: 1; }
+.btn-submit:active { transform: scale(0.98); }
+.btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+.error-msg { color: #e85d3a; font-size: 13px; margin-top: 10px; display: none; font-weight: 400; }
+.loading {
+  display: none;
+  text-align: center;
+  padding: 50px 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.spinner {
+  width: 48px; height: 48px;
+  border: 3px solid var(--border2);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 18px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { color: var(--muted); font-size: 14px; letter-spacing: 0.5px; }
+.loading strong { color: var(--lavender); display: block; font-size: 16px; margin-bottom: 6px; }
+.result-card {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  animation: fadeUp 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+}
+.result-icon { font-size: 56px; margin-bottom: 14px; }
+.result-name { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; }
+.result-verdict { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; margin-bottom: 22px; }
+.result-verdict.correct  { color: #5ecfb1; }
+.result-verdict.incorrect { color: #e85d3a; }
+.band-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(240,160,48,0.1);
+  border: 1px solid rgba(240,160,48,0.35);
+  color: var(--amber);
+  padding: 10px 26px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 26px;
+  letter-spacing: 1px;
+}
+.feedback-box {
+  background: var(--bg-inner);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--lavender);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.feedback-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--amber); margin-bottom: 10px; }
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #1a3d2a;
+  border: 1px solid rgba(37,211,102,0.4);
+  color: #25D366;
+  padding: 15px 30px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.2s;
+}
+.btn-whatsapp:hover { background: #25D366; color: white; border-color: #25D366; }
+.btn-whatsapp img { width: 20px; }
+.float-wa { position: fixed; bottom: 26px; right: 26px; z-index: 999; }
+.float-wa img { width: 56px; filter: drop-shadow(0 4px 16px rgba(37,211,102,0.4)); transition: transform 0.2s; }
+.float-wa img:hover { transform: scale(1.1); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-wrap">
+    <svg class="nb-mark" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="52" height="52" rx="10" fill="#1e1235"/>
+      <rect x="8" y="11" width="5" height="30" rx="1.5" fill="#d4c9f5"/>
+      <rect x="22" y="11" width="5" height="30" rx="1.5" fill="#d4c9f5"/>
+      <polygon points="8,11 13,11 27,37 22,37" fill="#d4c9f5"/>
+      <rect x="30" y="11" width="5" height="30" rx="1.5" fill="#d4c9f5"/>
+      <path d="M34 11 Q44 11 44 20 Q44 26 34 26 Q44 26 44 35 Q44 41 34 41 L34 11Z" fill="#d4c9f5"/>
+      <circle cx="44" cy="11" r="4" fill="#f0a030"/>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-name"><span>Next</span><span>Border</span></div>
+      <div class="brand-divider"></div>
+      <div class="brand-tagline">Crossing Boundaries · Building Futures</div>
+    </div>
+  </div>
+  <div class="header-badge">Free IELTS Test</div>
+</div>
+
+<div class="container">
+  <div class="page-title">
+    <h2>IELTS Reading Practice</h2>
+    <p>AI-powered evaluation · Instant band score · WhatsApp result</p>
+  </div>
+
+  <div class="card" id="testCard">
+    <div class="timer-wrap">
+      <div class="timer" id="timer">05:00</div>
+      <div class="timer-label">Time Remaining</div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="section-label">Reading Passage</div>
+    <div class="passage" id="passage">
+      Oxford University is one of the oldest universities in the world. It is located in England and attracts thousands of international students every year. The university offers a wide range of undergraduate and postgraduate programs and is known for its rigorous academic standards.
+    </div>
+    <div class="section-label">Question</div>
+    <p class="question-text" id="questionText">Which country is Oxford University located in?</p>
+    <div class="options" id="options">
+      <label class="option"><input type="radio" name="answer" value="United Kingdom"> United Kingdom</label>
+      <label class="option"><input type="radio" name="answer" value="Canada"> Canada</label>
+      <label class="option"><input type="radio" name="answer" value="United States"> United States</label>
+      <label class="option"><input type="radio" name="answer" value="Australia"> Australia</label>
+    </div>
+    <p class="error-msg" id="answerError">⚠️ Please select an answer before submitting.</p>
+  </div>
+
+  <div class="card" id="detailsCard">
+    <div class="section-label">Your Details</div>
+    <div class="form-grid">
+      <div class="input-wrap">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="e.g. Md. Rahim">
+      </div>
+      <div class="input-wrap">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="e.g. rahim@gmail.com">
+      </div>
+      <div class="input-wrap">
+        <label>WhatsApp Number</label>
+        <input type="text" id="whatsapp" placeholder="e.g. 01XXXXXXXXX">
+      </div>
+    </div>
+    <p class="error-msg" id="formError">⚠️ Please fill in all fields.</p>
+    <button class="btn-submit" id="submitBtn" onclick="submitTest()">
+      Submit &amp; Get AI Feedback →
+    </button>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <strong>Evaluating your answer...</strong>
+    <p>AI is generating your band score and feedback</p>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-icon" id="resultIcon"></div>
+    <p class="result-name" id="resultName"></p>
+    <p class="result-verdict" id="resultVerdict"></p>
+    <div class="band-score" id="bandScore"></div>
+    <div class="feedback-box">
+      <div class="feedback-label">AI Examiner Feedback</div>
+      <div id="feedbackText"></div>
+    </div>
+    <a href="#" class="btn-whatsapp" id="waBtn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+      Send Result via WhatsApp
+    </a>
+  </div>
+</div>
+
+<a href="https://wa.me/8801888057888" class="float-wa" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</a>
+
+<script>
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzN3HCj181MWkP-qtx9aXH6iKvvEWb0uu4c1653squkB_Fo1CSzYHXs6d0GDs8uGSPPWA/exec";
+
+const TOTAL_TIME = 300;
+let timeLeft = TOTAL_TIME;
+const timerEl = document.getElementById('timer');
+const progressFill = document.getElementById('progressFill');
+
+let timerInterval = setInterval(() => {
+  timeLeft--;
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  progressFill.style.width = (timeLeft / TOTAL_TIME * 100) + '%';
+  if (timeLeft <= 60) timerEl.classList.add('warning');
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval);
+    timerEl.textContent = "00:00";
+    submitTest();
+  }
+}, 1000);
+
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+  });
+});
+
+async function submitTest() {
+  const selected = document.querySelector('input[name="answer"]:checked');
+  if (!selected) {
+    document.getElementById('answerError').style.display = 'block';
+    return;
+  }
+  document.getElementById('answerError').style.display = 'none';
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+  if (!name || !email || !whatsapp) {
+    document.getElementById('formError').style.display = 'block';
+    return;
+  }
+  document.getElementById('formError').style.display = 'none';
+  clearInterval(timerInterval);
+  document.getElementById('testCard').style.display = 'none';
+  document.getElementById('detailsCard').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+  const payload = {
+    name, email, whatsapp,
+    passage: document.getElementById('passage').innerText.trim(),
+    question: document.getElementById('questionText').innerText.trim(),
+    userAnswer: selected.value
+  };
+  try {
+    const res = await fetch(APPS_SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+    const data = await res.json();
+    document.getElementById('loading').style.display = 'none';
+    showResult(data);
+  } catch (err) {
+    document.getElementById('loading').style.display = 'none';
+    alert('Something went wrong. Please try again.');
+    location.reload();
+  }
+}
+
+function showResult(data) {
+  document.getElementById('resultCard').style.display = 'block';
+  document.getElementById('resultIcon').textContent = data.correct ? '🎉' : '📚';
+  document.getElementById('resultName').textContent = 'Result for ' + data.name;
+  const verdict = document.getElementById('resultVerdict');
+  verdict.textContent = data.correct ? 'Correct Answer!' : 'Incorrect Answer';
+  verdict.className = 'result-verdict ' + (data.correct ? 'correct' : 'incorrect');
+  document.getElementById('bandScore').textContent = data.band + '  ·  Score ' + data.score + '/9';
+  document.getElementById('feedbackText').textContent = data.feedback;
+  document.getElementById('waBtn').href = data.whatsappLink;
+}
+</script>
+
+</body>
+</html>
