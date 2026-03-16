@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>Free IELTS Practice Test</title>
+<title>Free IELTS Practice Test | NextBorder</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,16 +11,25 @@
 body{
 font-family:Arial;
 background:#f5f5f5;
+margin:0;
+padding:0;
 text-align:center;
-padding:40px;
+}
+
+.header{
+background:#4B2E83;
+color:white;
+padding:20px;
 }
 
 .container{
-max-width:600px;
+max-width:700px;
 margin:auto;
 background:white;
 padding:30px;
+margin-top:30px;
 border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 button{
@@ -30,12 +39,37 @@ padding:12px 25px;
 border:none;
 border-radius:6px;
 font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3b2268;
 }
 
 input,select{
 width:100%;
-padding:10px;
+padding:12px;
 margin:10px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+.timer{
+font-size:22px;
+color:#e63946;
+margin-bottom:20px;
+}
+
+.result{
+font-size:20px;
+margin-top:20px;
+font-weight:bold;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
 }
 
 </style>
@@ -44,45 +78,92 @@ margin:10px 0;
 
 <body>
 
+<div class="header">
+<h1>Free IELTS Practice Test</h1>
+<p>NextBorder International Education Consultancy</p>
+</div>
+
 <div class="container">
 
-<h1>Free IELTS Practice Test</h1>
+<div class="timer" id="timer">
+05:00
+</div>
 
-<p>Take a quick 5 minute IELTS test</p>
+<h2>Reading Practice</h2>
 
-<h3>Reading Question</h3>
+<p>
+Oxford University is one of the oldest universities in the world. It is located in England and attracts thousands of international students every year.
+</p>
 
-<p>Which country is famous for Oxford University?</p>
+<h3>Question:</h3>
+
+<p>Which country is Oxford University located in?</p>
 
 <select id="answer">
-<option>Choose answer</option>
-<option>UK</option>
-<option>Canada</option>
-<option>USA</option>
+<option value="">Choose answer</option>
+<option value="UK">United Kingdom</option>
+<option value="Canada">Canada</option>
+<option value="USA">United States</option>
+<option value="Australia">Australia</option>
 </select>
 
-<h3>Enter your details to see result</h3>
+<h3>Enter your details to see your IELTS result</h3>
 
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Your Email">
+<input type="text" placeholder="Full Name">
+
+<input type="email" placeholder="Email Address">
+
 <input type="text" placeholder="WhatsApp Number">
 
 <button onclick="showResult()">Submit Test</button>
 
-<p id="result"></p>
+<div class="result" id="result"></div>
 
 </div>
 
+<a href="https://wa.me/880XXXXXXXXXX" class="whatsapp">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="60">
+</a>
+
 <script>
+
+var time = 300;
+
+var timer = setInterval(function(){
+
+var minutes = Math.floor(time/60);
+var seconds = time%60;
+
+if(seconds < 10){
+seconds = "0" + seconds;
+}
+
+document.getElementById("timer").innerHTML =
+minutes + ":" + seconds;
+
+time--;
+
+if(time < 0){
+clearInterval(timer);
+document.getElementById("timer").innerHTML="Time Finished";
+}
+
+},1000);
+
 
 function showResult(){
 
 var ans=document.getElementById("answer").value;
 
+if(ans==""){
+alert("Please select an answer first");
+return;
+}
+
 if(ans=="UK"){
-document.getElementById("result").innerHTML="Estimated Score: Good!";
+document.getElementById("result").innerHTML="Estimated IELTS Band: 7.0 (Good comprehension)";
 }else{
-document.getElementById("result").innerHTML="Estimated Score: Try again.";
+document.getElementById("result").innerHTML="Estimated IELTS Band: 5.5 (Needs improvement)";
 }
 
 }
