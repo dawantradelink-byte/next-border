@@ -95,7 +95,7 @@ right:20px;
 Oxford University is one of the oldest universities in the world. It is located in England and attracts thousands of international students every year.
 </p>
 
-<h3>Question:</h3>
+<h3>Question</h3>
 
 <p>Which country is Oxford University located in?</p>
 
@@ -107,7 +107,7 @@ Oxford University is one of the oldest universities in the world. It is located 
 <option value="Australia">Australia</option>
 </select>
 
-<h3>Enter your details to see your IELTS result</h3>
+<h3>Enter your details to see your result</h3>
 
 <input type="text" placeholder="Full Name">
 
@@ -121,54 +121,8 @@ Oxford University is one of the oldest universities in the world. It is located 
 
 </div>
 
-<a href="https://wa.me/880XXXXXXXXXX" class="whatsapp">
+<a href="https://wa.me/8801888057888" class="whatsapp">
 <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="60">
 </a>
 
-<script>
-
-var time = 300;
-
-var timer = setInterval(function(){
-
-var minutes = Math.floor(time/60);
-var seconds = time%60;
-
-if(seconds < 10){
-seconds = "0" + seconds;
-}
-
-document.getElementById("timer").innerHTML =
-minutes + ":" + seconds;
-
-time--;
-
-if(time < 0){
-clearInterval(timer);
-document.getElementById("timer").innerHTML="Time Finished";
-}
-
-},1000);
-
-
-function showResult(){
-
-var ans=document.getElementById("answer").value;
-
-if(ans==""){
-alert("Please select an answer first");
-return;
-}
-
-if(ans=="UK"){
-document.getElementById("result").innerHTML="Estimated IELTS Band: 7.0 (Good comprehension)";
-}else{
-document.getElementById("result").innerHTML="Estimated IELTS Band: 5.5 (Needs improvement)";
-}
-
-}
-
-</script>
-
-</body>
-</html>
+<script
