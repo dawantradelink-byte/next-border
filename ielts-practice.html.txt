@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Free IELTS Practice Test</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:10px;
+}
+
+button{
+background:#4B2E83;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+font-size:16px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Free IELTS Practice Test</h1>
+
+<p>Take a quick 5 minute IELTS test</p>
+
+<h3>Reading Question</h3>
+
+<p>Which country is famous for Oxford University?</p>
+
+<select id="answer">
+<option>Choose answer</option>
+<option>UK</option>
+<option>Canada</option>
+<option>USA</option>
+</select>
+
+<h3>Enter your details to see result</h3>
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<input type="text" placeholder="WhatsApp Number">
+
+<button onclick="showResult()">Submit Test</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+
+function showResult(){
+
+var ans=document.getElementById("answer").value;
+
+if(ans=="UK"){
+document.getElementById("result").innerHTML="Estimated Score: Good!";
+}else{
+document.getElementById("result").innerHTML="Estimated Score: Try again.";
+}
+
+}
+
+</script>
+
+</body>
+</html>
