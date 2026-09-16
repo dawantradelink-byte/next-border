@@ -78,7 +78,7 @@ async function callOpenRouter(prompt) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) return null;
   const model = process.env.OPENROUTER_MODEL || "openai/gpt-4o-mini";
-  const siteUrl = process.env.NEXTBORDER_SITE_URL || "https://nextborder.netlify.app";
+  const siteUrl = process.env.NEXTBORDER_SITE_URL || "https://next-border.vercel.app";
   const response = await fetchWithTimeout("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}`, "HTTP-Referer": siteUrl, "X-Title": "NextBorder AI" },
