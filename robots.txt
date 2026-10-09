@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
 Disallow: /.netlify/
 
 Sitemap: https://next-border.vercel.app/sitemap.xml
